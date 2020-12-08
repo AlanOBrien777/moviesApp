@@ -3,14 +3,14 @@ import "./filterControls.css";
 import { getGenres } from "../../api/tmdb-api";
 
 const FilterControls = props => {
-  const [genres, setGenres] = useState([{ id: '0', name: "All" }])
+const [genres, setGenres] = useState([{ id: '0', name: "All" }])
 
   useEffect(() => {
     getGenres().then(allGenres => {
       setGenres([genres[0], ...allGenres]);
     });
   }, []);
-  
+
   const handleChange = (e, type, value) => {
     e.preventDefault()
     props.onUserInput(type, value)   // NEW
